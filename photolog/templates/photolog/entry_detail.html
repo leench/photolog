@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load thumbnail staticfiles photolog_utils %}
+{% load threadedcomments_tags %}
+
+{% block title %}{{ object.title }} ({{ object.date }}) - {{ settings.site_title }}{% endblock %}
+
+{% block staticfiles %}
+        <!-- Magnific Popup core CSS file -->
+        <link rel="stylesheet" href="{% static "photolog/js/magnific-popup.css" %}">
+        <link rel="stylesheet" href="{% static "photolog/js/jqui/jquery-ui.min.css" %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static "photolog/css/style.css" %}?v={{ random }}" />
+        <link rel="stylesheet" type="text/css" href="{% static "photolog/css/media-queries.css" %}?v={{ random }}" />
+
+        <script src="{% static "photolog/js/jquery.min.js" %}"></script>
+        <script src="{% static "photolog/js/jqui/jquery-ui.min.js" %}"></script>
+
+        <!-- Magnific Popup core JS file -->
+        <script src="{% static "photolog/js/jquery.magnific-popup.js" %}"></script>
+
+        <script src="{% static "photolog/js/utils.js" %}?v={{ random }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="top">
+        <div class="container">
+            {% include "photolog/inc_top-tools.html" %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="main-wrap" class="clearfix">
+            <div id="left-wrap">
+                {% include "photolog/inc_avatar.html" %}
+            </div>
+            <div id="right-wrap">
+                <div class="entry-wrap">
+                    <div class="entry-title clearfix">
+                        <div class="entry-date fl">
+                            <span class="e-date">{{ object.date|date:"d" }}</span><span class="e-date-s"> / {{ object.date|date:"m" }} / {{ object.date|date:"Y" }}</span>
+                        </div>
+
+                        <div class="photos_count fr">
+                            <a href=""></a>
+                        </div>
+                    </div>
+                    <ul class="photos clearfix" id="e-{{ object.id }}">
+                        {% for photo in object.photo_set.all %}
+                        {% get_comment_count for photo as comments_count %}
+                        <li>
+                        <div class="photo" id="p-{{ photo.id }}">
+                                {% if not photo.hidden %}
+                                <a href="{{ photo.photo.url }}" target="_blank" class="photo-link">
+                                    <img src="{{ photo.photo.list.url }}" alt="{{ photo.title }}" />
+                                </a>
+                                <span class="photo-caption">{{ photo.caption|safe }}</span>
+                                <span class="photo-shooting-time">{{ photo.shooting_time }}</span>
+                                {% if perms.photolog.edit_photologs %}
+                                <span class="n-rotation rotation">rotation</span>
+                                <span class="s-rotation rotation">rotation</span>
+                                <span class="edit-caption">edit</span>
+                                <span class="hide-photo">hide</span>
+                                <div class="update-photo-caption" style="display: none;">
+                                    <form action="/update-photo-caption/" method="post">
+                                        <input type="hidden" name="id" value="{{ photo.id }}" />
+                                        <input name="caption" class="fl caption-input" value="{{ photo.caption|safe }}" />
+                                        <button type="submit" class="btn btn-xs btn-default">保存</button>
+                                        <button class="closeform btn btn-xs btn-default">关闭</button>
+                                    </form>
+                                </div>
+                                {% endif %}
+                                {% else %}
+                                <div class="hiddenP" style="width:{{ photo.photo.list|fix_width }}px;">hidden</div>
+                                <span class="hide-photo hidden">hide</span>
+                                {% endif %}
+                                <span class="comment-photo"><a href="/p/comment/{{ photo.id }}/" class="ajax-popup-link">{{ comments_count }}</a></span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% include "photolog/inc_gallery_js.html" %}
+                </div>
+
+                <hr class="content-end-hr" />
+                <div id="comments-wrap">
+                    <a name="comment" ></a><h2>评论:</h2>
+                    <div id="comments">
+                    {% render_comment_form for object %}
+                    </div>
+                    <hr />
+                    <div id="cl">
+                    {% render_comment_list for object %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+    {% include "photolog/inc_footer.html" %}
+    </div>
+
+{% endblock %}

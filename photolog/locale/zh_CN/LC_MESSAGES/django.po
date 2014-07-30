@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-22 11:40+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: models.py:7 models.py:32 models.py:47
+msgid "title"
+msgstr "标题"
+
+#: models.py:9 models.py:49
+msgid "upload datetime"
+msgstr "上传时间"
+
+#: models.py:15 models.py:20
+msgid "avatar"
+msgstr "头像"
+
+#: models.py:16
+msgid "avatars"
+msgstr "头像"
+
+#: models.py:19
+msgid "site title"
+msgstr "站点标题"
+
+#: models.py:21
+msgid "photolog title"
+msgstr "图志标题"
+
+#: models.py:22
+msgid "photolog intro"
+msgstr "图志介绍"
+
+#: models.py:28
+msgid "site settings"
+msgstr "站点设置"
+
+#: models.py:33
+msgid "date"
+msgstr "日期"
+
+#: models.py:34
+msgid "content"
+msgstr "内容"
+
+#: models.py:35
+msgid "create time"
+msgstr "创建时间"
+
+#: models.py:41 models.py:46
+msgid "entry"
+msgstr "档案"
+
+#: models.py:42
+msgid "entries"
+msgstr "档案"
+
+#: models.py:48 models.py:62
+msgid "photo"
+msgstr "照片"
+
+#: models.py:50
+msgid "caption"
+msgstr "说明"
+
+#: models.py:51
+msgid "exif"
+msgstr "EXIF信息"
+
+#: models.py:52
+msgid "shooting time"
+msgstr "拍摄时间"
+
+#: models.py:53
+msgid "md5 hash of original file"
+msgstr "原始文件的MD5"
+
+#: models.py:54
+msgid "duplicate file"
+msgstr "重复文件"
+
+#: models.py:55
+msgid "hide photo"
+msgstr "隐藏照片"
+
+#: models.py:56
+msgid "order"
+msgstr "排序"
+
+#: models.py:63
+msgid "photos"
+msgstr "照片"
+
+#: models.py:66
+msgid "Avatar"
+msgstr "头像"
+
+#: models.py:67
+msgid "SiteSettings"
+msgstr "站点设置"
+
+#: models.py:68
+msgid "Entry"
+msgstr "档案"
+
+#: models.py:69
+msgid "Photo"
+msgstr "照片"

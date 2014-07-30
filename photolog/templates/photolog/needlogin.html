@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load thumbnail staticfiles photolog_utils %}
+{% load threadedcomments_tags %}
+
+{% block title %}需要登录 - {{ settings.site_title }}{% endblock %}
+
+{% block staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "photolog/css/style.css" %}?v={{ random }}" />
+<link rel="stylesheet" type="text/css" href="{% static "photolog/css/media-queries.css" %}?v={{ random }}" />
+{% endblock %}
+
+{% block content %}
+    <div id="top">
+        <div class="container">
+            {% include "photolog/inc_top-tools.html" %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="main-wrap" class="clearfix">
+            <div id="left-wrap">
+                <div id="avatar-wrap" class="clearfix">
+                    <span id="avatar"><a href="/"><img src="{{ settings.avatar.avatar.avatar.url }}" alt="{{ settings.avatar.title }}" /></a></span>
+                    <span id="myname"><a href="/">{{ settings.photolog_title }}</a></span>
+                    <span id="birthday">2014年7月10日</span>
+                </div>
+                <div id="intro">
+                    <p>{{ settings.photolog_intro }}</p>
+                </div>
+            </div>
+            <div id="right-wrap">
+                <div id="needlogin">
+                    <h2 class="login-title">该操作需要登录以后才可进行。</h2>
+                    <a href="/u/login/"><img src="{% static "photolog/images/Connect_logo_4.png" %}" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>©2014 Leen. All rights reserved.</p>
+        <p>Design by @papa-Lee. Powered by Django Web Framework.</p>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load threadedcomments_tags %}
+<div class="comment-popup-block" style="max-width:600px; margin: 20px auto;">
+    <div class="comment-photo">
+        <h2>{{ object.title }}</h2>
+        {% if not object.hidden %}
+        <img src="{{ object.photo.comm.url }}" alt="{{ object.title }}" />
+        {% endif %}
+    </div>
+
+    <h2>评论:</h2>
+    <div id="comments">
+    {% render_comment_form for object %}
+    </div>
+    <hr />
+    <div id="cl">
+    {% render_comment_list for object %}
+    </div>
+
+    <button class="mfp-close" type="button" title="Close (Esc)">×</button>
+</div>

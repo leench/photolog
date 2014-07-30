@@ -1,0 +1,19 @@
+{% load staticfiles user_utils %}
+            <div class="user">
+                <ul class="nav navbar-nav fl">
+                    {% if request.user.is_authenticated %}
+                    <li><a>{{ request.user|show_user|safe }}</a></li>
+                    {% if request.user.is_superuser %}<li><a href="/checkphoto/">导入新照片</a>{% endif %}
+                    <li><a href="/u/logout">登出</a></li>
+                    {% else %}
+                    <li><a href="/u/login/"><img src="{% static "photolog/images/Connect_logo_6.png" %}" alt="用QQ账号登陆" /></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="links">
+                <ul class="nav navbar-nav fr">
+                    <li><a href="/"><b class="br">home</b></a></li>
+                    <li><a href="#"><b class="bg">about</b></a></li>
+                    <li><a href="/blog/"><b class="bb">logs</b></a></li>
+                </ul>
+            </div>

@@ -1,0 +1,27 @@
+                <script>
+                    $('#e-{{ entry.id }}').magnificPopup({
+                        delegate: 'a.photo-link',
+                        type:'image',
+                        tLoading: '载入图片 第 %curr% 张',
+                        mainClass: 'mfp-img-mobile',
+                        gallery: {
+                            enabled: true,
+                            navigateByImgClick: true,
+                            preload: [0,2] // Will preload 0 - before current, and 1 after the current image
+                        },
+                        image: {
+                            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                            titleSrc: function(item) {
+                                var text_extra = ( item.el.parent().find('span.photo-shooting-time').text() == 'None' ) ? '' : '<small>拍摄时间: ' + item.el.parent().find('span.photo-shooting-time').text() + ' by @papa-Lee.</small>' ;
+                                return item.el.parent().find('span.photo-caption').html() + text_extra;
+                            }
+                        }
+                    });
+
+                    $('.ajax-popup-link').magnificPopup({
+                        type: 'ajax',
+                        alignTop: true,
+                        overflowY: 'scroll'
+                    });
+
+                </script>
