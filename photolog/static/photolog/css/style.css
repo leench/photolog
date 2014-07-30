@@ -435,6 +435,14 @@ dl.comment dt {
 	margin-left: 1em;
 }
 
+.entry-body p {
+    font-size: 1.1em;
+}
+
+.entry-body a {
+    color: #428bca;
+}
+
 #footer {
     background: #f6ffff;
     font-size: .9em;

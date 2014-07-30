@@ -52,3 +52,12 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# others
+blog/
+cici/
+manage.py
+middleware/
+mobiler/
+templates/
+user_profiles/
+
